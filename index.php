@@ -1,5 +1,5 @@
 <?php
-//Test commit
+
 require_once "./vendor/autoload.php";
 
 global $DBA;
