@@ -1,0 +1,28 @@
+{% include "layout/header.twig" %}
+    <div id="pokemon-table"></div>
+  {% include "layout/footer.twig" %}
+</html>
+
+<script>
+  $(document).ready(function ($) {
+    $.get("api/get-local-pokemon-listing", function (data) {
+      let table = new Tabulator("#pokemon-table", {
+        data: data,
+        layout:"fitColumns",
+        pagination:"local",
+        paginationSize:15,
+        paginationSizeSelector:[5,10,15,20,25,30],
+        movableColumns:true,
+        paginationCounter:"rows",
+        columns: [
+          {
+            title: "Name", field: "name", hozAlign: "center", headerFilter: "input",
+            cellClick: function (e, cell) {
+              window.location.replace("pokemon-profile?name=" +cell.getRow().getData().name.toLowerCase())
+            }
+          },
+        ]
+      });
+    });
+  });
+</script>

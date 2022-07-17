@@ -1,0 +1,57 @@
+{% include "layout/header.twig" %}
+<link rel="stylesheet" href="css/pokemon-finder.css">
+<div class="container" id="mode">
+    <div class="content">
+        <div class="profilePhoto">
+            <div class="image"><img src="{{ sprite }}" alt="photo"></div>
+            <div class="name">
+                <h1>{{ name }}</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="followers">
+            <div class="f1 f">
+                <h2>{{ height }}</h2>
+                <p>Height</p>
+            </div>
+            <div class="f2 f">
+                <h2>{{ weight }}</h2>
+                <p>Weight</p>
+            </div>
+            <div class="f3 f">
+                <h2 id="liked">{{ liked }}</h2>
+                <p>Liked</p>
+            </div>
+        </div>
+        <div id="more" style="text-align: center">
+            <strong>Moves</strong>
+            <ol>
+            {% for move in moves %}
+                <li>{{ move }}</li>
+            {% endfor %}
+            </ol>
+        </div>
+        <div class="options">
+            <button type="button" class="btn btn-info rounded" onclick="like()">&#10084;</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function ($) {
+        $("#more").SlideToggler({
+            title: "More info"
+        });
+    });
+
+    function like() {
+        $.get("pokemon-like?name={{ name }}", function (data) {
+            if (data > 0) {
+                $("#liked").text(data);
+            }
+        })
+    }
+
+</script>
+
+

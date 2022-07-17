@@ -1,0 +1,200 @@
+    /*  ====================================
+    CSS adapted from code pen for mobile etc
+    ==================================== */
+
+
+
+header, nav, section, article, figure, figcaption, aside, footer {
+  display: block;
+}
+
+.about-content {
+  transform: scale(0.8);
+  transform-origin: 10% 10%;
+  color: #0F1013;
+  font-family: 'Oxygen', Helvetica, Verdana, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.6em;
+  letter-spacing: 0.1em;
+  word-spacing: 0.3em;
+  margin: 0 auto;
+  width: 330px;
+ 
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+@media screen and (min-width: 600px) {
+  .about-content {
+    width: 520px;
+  }
+}
+
+.wrapper {
+  text-align: center;
+  border: 5px solid silver;
+  border-style: outset;
+  border-radius: 80px 80px;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 10px 10px 10px 10px;
+}
+
+#main-header {
+  background: #3C3E47;
+  color: #FAFAFA;
+  padding: 5px;
+  margin-bottom: 0;
+  border-radius: 80px 80px 0 0;
+  border-bottom: 2px solid #9496A2;
+}
+
+#main-footer {
+  background-color: #3C3E47;
+  color: #FAFAFA;
+  padding: 5px;
+  margin-top: 10px;
+  clear: both;
+  border-radius: 0 0 80px 80px;
+  border-top: 2px solid #9496A2;
+
+}
+
+h1.intro {
+  font-family: 'Oxygen', Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 40 auto 0;
+  height: 30px;
+}
+
+hr {
+  color: #72747E;
+  border: 1px solid;
+  max-width: 780px;
+  border-style: inset;
+}
+
+strong {
+  font-size: 1em;
+  margin: 0 auto;
+}
+
+header img.personal-pic {
+  border: 3px inset #9496A2;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+header h2 { 
+  text-transform: uppercase;
+  font-weight: lighter;
+}
+
+.small {
+  font-size: 0.8em;
+  font-weight: lighter;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+
+nav h1 {
+  text-indent: -9999px;
+  font-size: 8px;
+}
+
+header nav ul {
+  margin: 0;
+  padding: 10px 0 20px;
+  display: block;
+}
+
+header nav ul li {
+  display: inline;
+  word-spacing: normal;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 20px 60px;
+  padding: 10px;
+}
+
+nav a:hover {
+  color: #FAFAFA;
+  border-bottom: 2px solid red;
+}
+
+a:hover {
+  color: #0F1013;
+  border-bottom: none;
+}
+
+a:active {
+  color: white;
+}
+
+.main-content {
+  max-width: 600px;
+  display: block;
+  float: left;
+  text-align: center;
+}
+
+section {
+  margin: 0 0px 0 0;
+  padding: 0 15px;
+}
+
+h1.content {
+  background: #3C3E47;
+  text-align: center;
+  color: #FAFAFA;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px 0;
+  margin: 40px 0 40px 0;
+  border-radius: 80px 80px;
+  box-shadow: 5px 5px 5px 5px #72747E;
+}
+
+section p, aside p {
+  margin: 10px 0 30px;
+  font-family: 'Oxygen', Helvetica, Arial, sans-serif;
+}
+
+article {
+  margin: 0;
+  text-align: left;
+}
+
+article h1 {
+  font-size: 16px;
+  text-decoration: underline;
+  text-indent: left;
+  margin: 0 0 0 0px;
+}
+
+section article ul {
+  display: block;
+  text-align: center;
+  margin: 0px auto;
+  padding: 0;
+}
+
+section article ul li {
+  font-family: 'Inconsolata', Courier, "Courier New", monospace;
+  display: inline-block;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 15px 0;
+}
+
+figure, figcaption {
+  text-align: center;
+  margin:0;
+}

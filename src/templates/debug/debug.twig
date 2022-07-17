@@ -1,0 +1,107 @@
+<script>
+//Check if jquery is defined, if not, include required env 
+//We do not want body on load, as jquery is in the header in layout
+//Hence we check at the current point in DOM construction and act in accordance
+
+  //prototypal (Check if the prototype available by $ returns a js instatiable on accessor execution)
+  if (typeof $!= 'function') {
+    document.write(`<link rel='stylesheet' href='/css/debug.css'>`)
+    document.write(`<link rel='stylesheet' href='/css/vendor/slidetoggler.css'>`)
+    document.write(`<script src='/js/vendor/jquery.min.js' type='text/javascript'><\/script>`)
+    document.write(`<script src='/js/vendor/slidetoggler.min.js' type='text/javascript'><\/script>`)
+  }
+</script>
+
+<img src="/images/anime-girl-peace.png" width="5%" style="border-radius:50px;">
+Tina4 Browser Debug |
+{% if data.action %}
+    Action : {{data.action}} |
+{% endif %}
+{{ 'now'|date('Y-m-d H:i:s') }} 
+
+<!-- Template iterator -->
+{% set tid = data.tid %}
+<!--Lets format the data, following is relatively straight forward-->
+<hr>
+<!--Each wrapping <div id=""> is a slidetoggler-->
+<div id="data{{tid}}">
+  <hr>
+  <h5><ul>$data</ul></h5>
+  <pre id="predata">
+     <code id="data-code" class="code-html">{{ data.data | json_encode(constant('JSON_PRETTY_PRINT')) }}</code>
+  </pre>
+  <hr>
+  </div>
+<div id='globals{{tid}}'>
+    <hr>
+    <h5><ul>$_GET</ul></h5>
+    <pre>
+    {{ data.get | json_encode(constant('JSON_PRETTY_PRINT')) }}
+    </pre>
+    <hr>
+  <h5><ul>$_POST</ul></h5>
+  <pre>
+  {{ data.post | json_encode(constant('JSON_PRETTY_PRINT')) }}
+  </pre>
+  <hr>
+  <h5><ul>$_FILES</ul></h5>
+  <pre>
+  {{ data.files | json_encode(constant('JSON_PRETTY_PRINT')) }}
+  </pre>
+  <hr>
+  <h5><ul>$_REQUST</ul></h5>
+  <pre>
+  {{ data.request | json_encode(constant('JSON_PRETTY_PRINT')) }}
+  </pre>
+  <hr>
+  </div>
+</div> 
+<div id="session{{tid}}">
+    <hr>
+    <h5><ul>$_Session</ul></h5>
+    <pre>
+    {{ data.session | json_encode(constant('JSON_PRETTY_PRINT')) }}
+    <hr>
+    <h5><ul>$_GLOBAL_ENV</ul></h5>
+    {{ data.global_env | json_encode(constant('JSON_PRETTY_PRINT')) }}
+    <hr>
+    </pre>
+</div> 
+<div id="server{{tid}}">
+    <hr>
+    <h5><ul>$_SERVER</ul></h5>
+    <pre>
+    {{ data.server | json_encode(constant('JSON_PRETTY_PRINT')) }}
+    </pre>
+    <hr>
+</div> 
+<div id="full-context{{tid}}">
+    <hr>
+    <h5><ul>$_SERVER</ul></h5>
+    <pre>
+      {{ _context | json_encode(constant('JSON_PRETTY_PRINT')) }}
+    </pre>
+    <hr>
+</div> 
+<hr>
+<script>console.log({{ _context | json_encode | raw }});</script>
+
+<script>
+$("#data{{tid}}").SlideToggler({
+    title   : "Data",
+    autoHide   : false,
+});
+$("#globals{{tid}}").SlideToggler({
+    title   : "Globals"
+});
+$("#session{{tid}}").SlideToggler({
+    title   : "Session"
+});
+$("#server{{tid}}").SlideToggler({
+    title   : "Server"
+});
+$("#full-context{{tid}}").SlideToggler({
+    title   : "Full Context"
+});
+
+</script>

@@ -1,0 +1,64 @@
+/*General and Mobile */
+body{
+    background: #9496A2 url(/images/background.jpg);
+}
+
+a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-description{
+  display:none;
+}
+
+h1{
+  font-family: 'Oxygen', Helvetica, Arial, sans-serif;
+  font-weight: bolder !important;
+  color: #fff !important;
+}       
+
+.pokemon-list-item {
+    background-color: #eee;
+    font-family:Arial, Helvetica, sans-serif;
+    width: 500px;
+    margin: 10px auto;
+    padding: 15px;
+    border-right: 5px solid #EBD671;
+    position: relative;
+    counter-increment: number;
+}
+
+.pokemon-list-item::before {
+    content: counter(number);
+    background-color: #EBD671;
+    border-left: 1px solid #EBD671;
+    border-radius: 5px;
+    padding: 15px;
+    color: white;
+    position: absolute;
+    left: -30px;
+    top: 0px;
+}
+
+/*Desktop ~ Large screens */
+@media screen and (min-width: 600px) {
+  .nav-description{
+    display:block;
+  }
+  
+  .search-input{
+    width:80%;
+    display:inline-block;
+  }
+
+  .search-button{
+    display:inline-block;
+    width:10%;
+  }
+}

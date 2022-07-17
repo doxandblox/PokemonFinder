@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "layout/header.twig" %}
+  <!-- Ensure css in scope before markup appended to DOM -->
+  <link rel="stylesheet" href="css/components/slider.css">
+
+  <!--Define Slider markup-->
+  <div id="slider">
+    Meet <label id="pokemon-name"></label>
+    <a href="#" class="control_next">></a>
+    <a href="#" class="control_prev"><</a>
+    <ul id="inner-slide-comp"></ul>  
+  </div>
+
+  <!--Slider options-->
+  <div class="slider_option">
+    <input type="checkbox" id="checkbox">
+    <label for="checkbox">Autoplay Slider</label>
+  </div> 
+
+  <!--Include the slider (Per template basis)-->
+  <script src="js/components/slider.js"></script>  
+
+  <!--Fetch data from local api and present Bulbasaur!-->
+  <script>
+  $(document).ready(function ($) {
+      let rand = Math.floor(Math.random() * (1154 - 1 + 1) ) + 1;
+      $.get("api/get-pokemon?id="+rand, function( data ) {
+          $("#pokemon-name").text(data["forms"][0]["name"].charAt(0).toUpperCase() + data["forms"][0]["name"].slice(1));
+          //Store the full result as a javascript object
+          let spritesObj = data.sprites;
+          //create an array
+          let sprites = [];
+          //place holder for length for later reference
+          let spritesArrLength;
+
+          //Lets gather the images we wish to display in the slider
+          for (s in spritesObj){ 
+              sprite = spritesObj[s];
+              //The API provides a set of static indexs, not all are populated, ensure the index has a image value 
+              if(Object.prototype.toString.call(sprite) === "[object String]"){
+                sprites.push(spritesObj[s])
+              }
+          }
+          //If we dont reverse it starts on bulbasaurs butt....
+          sprites.reverse();
+          //Get our lenth
+          spritesArrLength = sprites.length;
+          //Add our slides
+          for(let i = 0; i<spritesArrLength; i++){
+              $("#inner-slide-comp").append("<li><img src='"+sprites[i]+"' class='slide-img' </li>")
+          }
+
+          //Initialize slider functionality
+          initSlider('slider');
+      });
+  }); 
+  </script>
+  {% include "layout/footer.twig" %}
+</html>
